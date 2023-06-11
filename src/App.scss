@@ -18,6 +18,25 @@
   font-family: "Brevia", sans-serif;
 }
 
+.add-member {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  line-height: 0;
+  padding: 12px;
+  aspect-ratio: 1;
+  color: #fff;
+  background: #333;
+  border-radius: 50%;
+  font-size: 32px;
+  border: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    background: #666;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;

@@ -1,7 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
+import { Dialog } from "@mui/material"
+
 import "./App.scss"
+import { Card } from "./components/Card"
 
 function App() {
+  const [open, setOpen] = useState(false)
   const clash = [
     {
       title: "Team Battle",
@@ -92,26 +96,18 @@ function App() {
       color: "red"
     }
   ]
+
   return (
     <div className="App">
-      {clash.map((card) => (
-        <div className="card">
-          <h2 className="card__title">{card.title}</h2>
-          <div className={`card__content card__content--${card.color}`}>
-            <p
-              className={`card__description ${
-                card.length !== "unlimited" ? "card__description--versus" : ""
-              }`}
-            >
-              {card.description}
-            </p>
-            <span className="card__points">{card.points}</span>
-            <div className="card__time">
-              <span>{card.time}Start</span>
-            </div>
-          </div>
-        </div>
-      ))}
+      <button className="add-member" onClick={() => setOpen(true)}>
+        +
+      </button>
+
+      <Card clash={clash} />
+
+      <Dialog onClose={() => setOpen(false)} open={open}>
+        <h3>xpto</h3>
+      </Dialog>
     </div>
   )
 }
