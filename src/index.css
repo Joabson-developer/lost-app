@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Brevia";
+  src: url("fonts/Brevia-Bold.woff");
+}
+
+@font-face {
+  font-family: "Choc";
+  src: url("fonts/choc.woff");
+}
+
 * {
   margin: 0;
   padding: 0;

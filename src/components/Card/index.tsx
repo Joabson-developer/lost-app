@@ -1,4 +1,6 @@
-export function Card(props: any) {
+import "./style.scss"
+
+export function Card<T>(props: { clash: T[] }) {
   return (
     <>
       {props.clash.map((card: any) => (
@@ -12,7 +14,9 @@ export function Card(props: any) {
             >
               {card.description}
             </p>
-            <span className="card__points">{card.points}</span>
+            <span className="card__points">
+              The winner will obtain <strong>{card.points}</strong> Points
+            </span>
             <div className="card__time">
               <span>{card.time}Start</span>
             </div>
