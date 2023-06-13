@@ -26,3 +26,26 @@
     background: #666;
   }
 }
+
+.form-content {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2%;
+
+  .nickname {
+    flex: 1 1 100%;
+  }
+
+  .atk,
+  .hp {
+    flex: 1 1 48%;
+  }
+  .button {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 2%;
+  }
+}

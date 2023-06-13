@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Dialog } from "@mui/material"
+import { Button, Dialog, TextField } from "@mui/material"
 import { Card } from "./components/Card"
 
 import "./App.scss"
@@ -124,6 +124,22 @@ function App() {
         maxWidth="sm"
         fullWidth
       >
+        <div className="form-content">
+          <TextField
+            id="nickname"
+            className="nickname"
+            label="nickname"
+            variant="standard"
+          />
+          <TextField id="atk" className="atk" label="ATK" variant="standard" />
+          <TextField id="hp" className="hp" label="HP" variant="standard" />
+
+          <div className="button">
+            <Button variant="contained" disableElevation>
+              Adicionar
+            </Button>
+          </div>
+        </div>
         <Table players={players} />
       </Dialog>
     </div>
