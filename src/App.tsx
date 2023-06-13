@@ -3,18 +3,22 @@ import { Dialog } from "@mui/material"
 import { Card } from "./components/Card"
 
 import "./App.scss"
-
-type Clash = {
-  title: string
-  description: string
-  points: number
-  length: "unlimited" | number
-  time: string
-  color: "purple" | "green" | "red"
-}
+import { Table } from "./components/Table"
 
 function App() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
+  const players: Player[] = [
+    {
+      nickName: "LTNaruaito",
+      hp: 715,
+      atk: 2322
+    },
+    {
+      nickName: "teste",
+      hp: 1000,
+      atk: 3000
+    }
+  ]
   const clash: Clash[] = [
     {
       title: "Team Battle",
@@ -114,8 +118,13 @@ function App() {
 
       <Card clash={clash} />
 
-      <Dialog onClose={() => setOpen(false)} open={open}>
-        <h3>xpto</h3>
+      <Dialog
+        onClose={() => setOpen(false)}
+        open={open}
+        maxWidth="sm"
+        fullWidth
+      >
+        <Table players={players} />
       </Dialog>
     </div>
   )

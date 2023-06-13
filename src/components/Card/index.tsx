@@ -3,8 +3,8 @@ import "./style.scss"
 export function Card<T>(props: { clash: T[] }) {
   return (
     <>
-      {props.clash.map((card: any) => (
-        <div className="card">
+      {props.clash.map((card: any, index) => (
+        <div className="card" key={index}>
           <h2 className="card__title">{card.title}</h2>
           <div className={`card__content card__content--${card.color}`}>
             <p

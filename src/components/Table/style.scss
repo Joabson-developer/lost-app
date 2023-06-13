@@ -1,0 +1,31 @@
+table {
+  text-align: center;
+  font-weight: bold;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+
+  thead th {
+    border-bottom: 1px solid rgba(99, 99, 99, 0.5);
+
+    &.actions {
+      width: 75px;
+    }
+  }
+
+  button {
+    padding: 5px;
+    line-height: 0;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+
+    &:first-child {
+      margin-right: 8px;
+      color: #00108a;
+    }
+
+    &:last-child {
+      color: #ff0000;
+    }
+  }
+}
