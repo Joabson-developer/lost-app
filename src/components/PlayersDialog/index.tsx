@@ -1,13 +1,25 @@
 import { Button, Dialog, TextField } from "@mui/material"
 import { Table } from "../Table"
+import { styled } from "@mui/material/styles"
 import "./style.scss"
 import { PlayersContext } from "../../contexts/players/players.context"
 import { useContext, useEffect, useState } from "react"
+
+import closeButton from "../../assets/close-button.png"
 
 type PlayersDialogProps = {
   open: boolean
   dispatch: () => void
 }
+
+const BootstrapDialog = styled(Dialog)(() => ({
+  "& .MuiDialog-paper": {
+    backgroundColor: "#0b2042",
+    color: "#ffffff",
+    padding: "4px",
+    paddingTop: "50px"
+  }
+}))
 
 export function PlayersDialog({ open, dispatch }: PlayersDialogProps) {
   const { players, setPlayers } = useContext(PlayersContext)
@@ -29,104 +41,109 @@ export function PlayersDialog({ open, dispatch }: PlayersDialogProps) {
   }, [players])
 
   return (
-    <Dialog onClose={dispatch} open={open} maxWidth="sm" fullWidth>
-      <div className="form-content">
-        <TextField
-          id="nickname"
-          className="nickname"
-          label="nickname"
-          variant="standard"
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
-        />
-        <TextField
-          id="atk"
-          type="number"
-          className="atk"
-          label="ATK"
-          variant="standard"
-          value={atk}
-          onChange={(e) => setAtk(e.target.value)}
-        />
-        <TextField
-          id="hp"
-          type="number"
-          className="hp"
-          label="HP"
-          variant="standard"
-          value={hp}
-          onChange={(e) => setHp(e.target.value)}
-        />
+    <BootstrapDialog onClose={dispatch} open={open} maxWidth="sm" fullWidth>
+      <button aria-label="fechar" className="close" onClick={dispatch}>
+        <img src={closeButton} alt="" aria-hidden="true" />
+      </button>
+      <div className="container">
+        <div className="form-content">
+          <TextField
+            id="nickname"
+            className="nickname"
+            label="nickname"
+            variant="standard"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+          />
+          <TextField
+            id="atk"
+            type="number"
+            className="atk"
+            label="ATK"
+            variant="standard"
+            value={atk}
+            onChange={(e) => setAtk(e.target.value)}
+          />
+          <TextField
+            id="hp"
+            type="number"
+            className="hp"
+            label="HP"
+            variant="standard"
+            value={hp}
+            onChange={(e) => setHp(e.target.value)}
+          />
 
-        <div className="button-group">
-          {onPlayerEdit() ? (
-            <>
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={() => {
-                  if (nickname && atk && hp)
-                    setPlayers((current) =>
-                      current.map((player) =>
-                        player.edit
-                          ? {
-                              hp,
-                              atk,
-                              nickname,
-                              edit: false
-                            }
-                          : player
+          <div className="button-group">
+            {onPlayerEdit() ? (
+              <>
+                <Button
+                  variant="contained"
+                  disableElevation
+                  onClick={() => {
+                    if (nickname && atk && hp)
+                      setPlayers((current) =>
+                        current.map((player) =>
+                          player.edit
+                            ? {
+                                hp,
+                                atk,
+                                nickname,
+                                edit: false
+                              }
+                            : player
+                        )
                       )
-                    )
-                }}
-              >
-                Salvar
-              </Button>
+                  }}
+                >
+                  Salvar
+                </Button>
 
+                <Button
+                  variant="contained"
+                  color="error"
+                  disableElevation
+                  onClick={() => {
+                    setPlayers((current) =>
+                      current.map((player) => ({
+                        ...player,
+                        edit: false
+                      }))
+                    )
+                  }}
+                >
+                  Cancelar
+                </Button>
+              </>
+            ) : (
               <Button
                 variant="contained"
-                color="error"
                 disableElevation
                 onClick={() => {
-                  setPlayers((current) =>
-                    current.map((player) => ({
-                      ...player,
-                      edit: false
-                    }))
-                  )
+                  if (hp && atk && nickname) {
+                    setPlayers((current) => {
+                      return [
+                        ...current,
+                        {
+                          atk,
+                          hp,
+                          nickname
+                        }
+                      ]
+                    })
+                    setAtk("")
+                    setHp("")
+                    setNickname("")
+                  }
                 }}
               >
-                Cancelar
+                Adicionar
               </Button>
-            </>
-          ) : (
-            <Button
-              variant="contained"
-              disableElevation
-              onClick={() => {
-                if (hp && atk && nickname) {
-                  setPlayers((current) => {
-                    return [
-                      ...current,
-                      {
-                        atk,
-                        hp,
-                        nickname
-                      }
-                    ]
-                  })
-                  setAtk("")
-                  setHp("")
-                  setNickname("")
-                }
-              }}
-            >
-              Adicionar
-            </Button>
-          )}
+            )}
+          </div>
         </div>
+        <Table />
       </div>
-      <Table />
-    </Dialog>
+    </BootstrapDialog>
   )
 }

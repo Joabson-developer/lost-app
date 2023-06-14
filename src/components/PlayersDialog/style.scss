@@ -1,10 +1,27 @@
-.form-content {
-  .button-group {
-    margin-top: 24px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
+.container {
+  background-color: #465981;
+  border-radius: 4px;
+  .form-content {
+    .button-group {
+      margin-top: 24px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  line-height: 0;
+  background-color: transparent;
+
+  img {
+    max-width: 32px;
   }
 }
