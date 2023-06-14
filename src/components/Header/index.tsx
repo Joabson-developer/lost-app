@@ -13,7 +13,7 @@ export function Header({ dispatch }: HeaderProps) {
       <img src={logo} alt="Imagem de logo" />
       <button className="add-member" onClick={dispatch}>
         <img src={iconProfile} aria-hidden="true" alt="" />
-        Profile
+        Add member
       </button>
     </header>
   )
