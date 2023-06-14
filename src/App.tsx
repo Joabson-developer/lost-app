@@ -4,9 +4,10 @@ import { Card } from "./components/Card"
 
 import "./App.scss"
 import { Table } from "./components/Table"
+import { Header } from "./components/Header"
 
 function App() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const players: Player[] = [
     {
       nickName: "LTNaruaito",
@@ -112,10 +113,7 @@ function App() {
 
   return (
     <div className="App">
-      <button className="add-member" onClick={() => setOpen(true)}>
-        +
-      </button>
-
+      <Header dispatch={() => setOpen(true)} />
       <Card clash={clash} />
 
       <Dialog
