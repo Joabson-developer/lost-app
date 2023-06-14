@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ClashContext } from "./clash.context"
 
 const initialClash: Clash[] = [
@@ -104,8 +104,18 @@ const initialClash: Clash[] = [
 ]
 
 export function ClashProvider({ children }: { children: JSX.Element }) {
-  const [clash, setClash] = useState<Clash[]>(initialClash)
+  const [clash, setClash] = useState<Clash[]>(() => {
+    try {
+      const response = localStorage.getItem("clash")!
+      return JSON.parse(response) || initialClash
+    } catch {
+      return initialClash
+    }
+  })
 
+  useEffect(() => {
+    localStorage.setItem("clash", JSON.stringify(clash))
+  }, [clash])
   return (
     <ClashContext.Provider value={{ clash, setClash }}>
       {children}
