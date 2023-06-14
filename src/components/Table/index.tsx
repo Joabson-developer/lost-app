@@ -29,10 +29,18 @@ export function Table() {
                 <td>{player.atk}</td>
                 <td>{player.hp}</td>
                 <td>
-                  <button>
+                  <button
+                    onClick={() => {
+                      console.log("editar")
+                    }}
+                  >
                     <BsPencilFill />
                   </button>
-                  <button>
+                  <button
+                    onClick={() => {
+                      console.log("excluir")
+                    }}
+                  >
                     <BsFillTrashFill />
                   </button>
                 </td>
