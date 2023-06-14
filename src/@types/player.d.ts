@@ -1,5 +1,6 @@
 type Player = {
-  nickName: string
-  hp: number
-  atk: number
+  nickname: string
+  hp: string
+  atk: string
+  edit?: boolean
 }

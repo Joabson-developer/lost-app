@@ -2,7 +2,7 @@ import { Button, Dialog, TextField } from "@mui/material"
 import { Table } from "../Table"
 import "./style.scss"
 import { PlayersContext } from "../../contexts/players/players.context"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 
 type PlayersDialogProps = {
   open: boolean
@@ -10,11 +10,23 @@ type PlayersDialogProps = {
 }
 
 export function PlayersDialog({ open, dispatch }: PlayersDialogProps) {
-  const { setPlayers } = useContext(PlayersContext)
+  const { players, setPlayers } = useContext(PlayersContext)
 
-  const [nickName, setNickName] = useState("")
-  const [atk, setAtk] = useState(0)
-  const [hp, setHp] = useState(0)
+  const [nickname, setNickname] = useState("")
+  const [atk, setAtk] = useState("")
+  const [hp, setHp] = useState("")
+
+  function onPlayerEdit(): Player | undefined {
+    const [edited] = players.filter(({ edit }) => edit)
+    return edited
+  }
+
+  useEffect(() => {
+    const [edited] = players.filter(({ edit }) => edit)
+    setNickname(edited?.nickname || "")
+    setAtk(edited?.atk || "")
+    setHp(edited?.hp || "")
+  }, [players])
 
   return (
     <Dialog onClose={dispatch} open={open} maxWidth="sm" fullWidth>
@@ -24,50 +36,94 @@ export function PlayersDialog({ open, dispatch }: PlayersDialogProps) {
           className="nickname"
           label="nickname"
           variant="standard"
-          value={nickName}
-          onChange={(e) => setNickName(e.target.value)}
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
         />
         <TextField
           id="atk"
+          type="number"
           className="atk"
           label="ATK"
           variant="standard"
           value={atk}
-          onChange={(e) => setAtk(+e.target.value)}
+          onChange={(e) => setAtk(e.target.value)}
         />
         <TextField
           id="hp"
+          type="number"
           className="hp"
           label="HP"
           variant="standard"
           value={hp}
-          onChange={(e) => setHp(+e.target.value)}
+          onChange={(e) => setHp(e.target.value)}
         />
 
-        <div className="button">
-          <Button
-            variant="contained"
-            disableElevation
-            onClick={() => {
-              if (hp && atk && nickName) {
-                setPlayers((current) => {
-                  return [
-                    ...current,
-                    {
-                      atk,
-                      hp,
-                      nickName
-                    }
-                  ]
-                })
-                setAtk(0)
-                setHp(0)
-                setNickName("")
-              }
-            }}
-          >
-            Adicionar
-          </Button>
+        <div className="button-group">
+          {onPlayerEdit() ? (
+            <>
+              <Button
+                variant="contained"
+                disableElevation
+                onClick={() => {
+                  if (nickname && atk && hp)
+                    setPlayers((current) =>
+                      current.map((player) =>
+                        player.edit
+                          ? {
+                              hp,
+                              atk,
+                              nickname,
+                              edit: false
+                            }
+                          : player
+                      )
+                    )
+                }}
+              >
+                Salvar
+              </Button>
+
+              <Button
+                variant="contained"
+                color="error"
+                disableElevation
+                onClick={() => {
+                  setPlayers((current) =>
+                    current.map((player) => ({
+                      ...player,
+                      edit: false
+                    }))
+                  )
+                }}
+              >
+                Cancelar
+              </Button>
+            </>
+          ) : (
+            <Button
+              variant="contained"
+              disableElevation
+              onClick={() => {
+                if (hp && atk && nickname) {
+                  setPlayers((current) => {
+                    return [
+                      ...current,
+                      {
+                        atk,
+                        hp,
+                        nickname
+                      }
+                    ]
+                  })
+                  setAtk("")
+                  setHp("")
+                  setNickname("")
+                }
+              }}
+            >
+              Adicionar
+            </Button>
+          )}
         </div>
       </div>
       <Table />

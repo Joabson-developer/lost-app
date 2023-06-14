@@ -1,89 +1,10 @@
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: #000;
-
-  &__title {
-    color: #ffffff;
-    background: #000;
-    margin-bottom: -10px;
-    z-index: 2;
-    padding-inline: 12px;
-    border-radius: 0 0 8px 8px;
-  }
-
-  &__content {
-    width: 100%;
-    padding-top: 24px;
-
-    &.card__content--purple {
-      background: rgb(215, 130, 251);
-      background: radial-gradient(
-        circle,
-        rgba(215, 130, 251, 1) 0%,
-        rgba(112, 57, 159, 1) 100%
-      );
-    }
-    &.card__content--green {
-      background: rgb(173, 243, 66);
-      background: radial-gradient(
-        circle,
-        rgba(173, 243, 66, 1) 0%,
-        rgba(93, 145, 35, 1) 100%
-      );
-    }
-    &.card__content--red {
-      background: rgb(253, 137, 122);
-      background: radial-gradient(
-        circle,
-        rgba(253, 137, 122, 1) 0%,
-        rgba(166, 52, 52, 1) 100%
-      );
-    }
-  }
-
-  &__description {
-    font-size: 24px;
-    &--versus {
-      font-family: "Choc", sans-serif;
-      font-size: 38px;
-    }
-  }
-  &__points {
-    font-size: 18px;
-    strong {
-      font-size: 32px;
-    }
-  }
-  &__time {
-    width: 150px;
-    background: #4e4e4e;
-    color: #fff;
-    padding: 12px 8px;
-    margin: 24px auto -24px;
-    position: relative;
-
-    &:before,
-    &:after {
-      content: "";
-      width: 0px;
-      height: 0px;
-      top: 0px;
-      position: absolute;
-    }
-
-    &:before {
-      border-top: 46px solid transparent;
-      border-right: 8px solid #4e4e4e;
-      left: -8px;
-    }
-
-    &:after {
-      border-bottom: 46px solid transparent;
-      border-left: 8px solid #4e4e4e;
-      right: -8px;
-    }
+.form-content {
+  .button-group {
+    margin-top: 24px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
   }
 }

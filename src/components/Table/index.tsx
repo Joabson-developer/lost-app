@@ -25,20 +25,33 @@ export function Table() {
             {players.map((player, index) => (
               <tr key={index}>
                 <th scope="row">{index + 1}</th>
-                <td>{player.nickName}</td>
+                <td>{player.nickname}</td>
                 <td>{player.atk}</td>
                 <td>{player.hp}</td>
                 <td>
                   <button
                     onClick={() => {
-                      console.log("editar")
+                      setPlayers((current) =>
+                        current.map((currentPlayer, currentIndex) =>
+                          currentIndex !== index
+                            ? { ...currentPlayer, edit: false }
+                            : {
+                                ...currentPlayer,
+                                edit: true
+                              }
+                        )
+                      )
                     }}
                   >
                     <BsPencilFill />
                   </button>
                   <button
                     onClick={() => {
-                      console.log("excluir")
+                      setPlayers((current) =>
+                        current.filter(
+                          (_, currentIndex) => currentIndex !== index
+                        )
+                      )
                     }}
                   >
                     <BsFillTrashFill />
