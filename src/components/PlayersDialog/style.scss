@@ -20,6 +20,11 @@
   border: none;
   line-height: 0;
   background-color: transparent;
+  transition: scale 200ms ease;
+
+  &:hover {
+    scale: 0.9;
+  }
 
   img {
     max-width: 32px;

@@ -15,8 +15,8 @@ type PlayersDialogProps = {
 const BootstrapDialog = styled(Dialog)(() => ({
   "& .MuiDialog-paper": {
     backgroundColor: "#0b2042",
-    color: "#ffffff",
-    padding: "4px",
+    color: "#fbffff",
+    padding: "8px",
     paddingTop: "50px"
   }
 }))
