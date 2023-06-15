@@ -9,7 +9,7 @@ import closeButton from "../../assets/close-button.png"
 
 type PlayersDialogProps = {
   open: boolean
-  dispatch: () => void
+  dispatch?: () => void
 }
 
 const BootstrapDialog = styled(Dialog)(() => ({

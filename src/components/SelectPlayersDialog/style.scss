@@ -1,0 +1,23 @@
+.container {
+  background-color: #465981;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  line-height: 0;
+  background-color: transparent;
+  transition: scale 200ms ease;
+
+  &:hover {
+    scale: 0.9;
+  }
+
+  img {
+    max-width: 32px;
+  }
+}

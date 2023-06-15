@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Card } from "./components/Card"
+import { Cards } from "./components/Cards"
 
 import "./App.scss"
 import { Header } from "./components/Header"
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Header dispatch={() => setOpen(true)} className="header--fixed" />
-      <Card />
+      <Cards />
       <PlayersDialog open={open} dispatch={() => setOpen(false)} />
     </div>
   )

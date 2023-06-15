@@ -1,0 +1,40 @@
+table {
+  text-align: center;
+  font-weight: bold;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  font-size: 16px;
+  width: 100%;
+  color: #b1c0e9;
+  background: #364461;
+  border-radius: 4px;
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
+
+  thead th {
+    border-bottom: 1px solid rgba(99, 99, 99, 0.5);
+
+    &.actions {
+      width: 75px;
+    }
+  }
+
+  button {
+    padding: 5px;
+    line-height: 0;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+
+    &:first-child {
+      margin-right: 8px;
+      color: #b1c0e9;
+    }
+
+    &:last-child {
+      color: #b1c0e9;
+    }
+  }
+}
