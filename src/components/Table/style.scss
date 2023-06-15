@@ -5,6 +5,9 @@ table {
   border-spacing: 0 15px;
   font-size: 16px;
   width: 100%;
+  color: #b1c0e9;
+  background: #364461;
+  border-radius: 4px;
 
   @media (max-width: 400px) {
     font-size: 12px;
@@ -27,11 +30,11 @@ table {
 
     &:first-child {
       margin-right: 8px;
-      color: #00108a;
+      color: #b1c0e9;
     }
 
     &:last-child {
-      color: #ff0000;
+      color: #b1c0e9;
     }
   }
 }

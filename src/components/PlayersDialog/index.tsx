@@ -47,30 +47,25 @@ export function PlayersDialog({ open, dispatch }: PlayersDialogProps) {
       </button>
       <div className="container">
         <div className="form-content">
-          <TextField
-            id="nickname"
+          <input
+            type="text"
             className="nickname"
-            label="nickname"
-            variant="standard"
             value={nickname}
+            placeholder="Digite o nickname"
             onChange={(e) => setNickname(e.target.value)}
           />
-          <TextField
-            id="atk"
+          <input
             type="number"
             className="atk"
-            label="ATK"
-            variant="standard"
             value={atk}
+            placeholder="Digite o ATK"
             onChange={(e) => setAtk(e.target.value)}
           />
-          <TextField
-            id="hp"
+          <input
             type="number"
             className="hp"
-            label="HP"
-            variant="standard"
             value={hp}
+            placeholder="Digite o HP"
             onChange={(e) => setHp(e.target.value)}
           />
 
