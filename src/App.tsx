@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Card } from "./components/Card"
 
 import "./App.scss"
-import { Table } from "./components/Table"
 import { Header } from "./components/Header"
 import { PlayersDialog } from "./components/PlayersDialog"
 
@@ -11,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header dispatch={() => setOpen(true)} />
+      <Header dispatch={() => setOpen(true)} className="header--fixed" />
       <Card />
       <PlayersDialog open={open} dispatch={() => setOpen(false)} />
     </div>
