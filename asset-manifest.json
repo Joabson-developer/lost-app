@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/lost-app/static/css/main.ce9fa3fa.css",
-    "main.js": "/lost-app/static/js/main.3f1e45dd.js",
+    "main.css": "/lost-app/static/css/main.16054a61.css",
+    "main.js": "/lost-app/static/js/main.d0d557b3.js",
     "static/js/787.5d0e5b5d.chunk.js": "/lost-app/static/js/787.5d0e5b5d.chunk.js",
     "static/media/logo.png": "/lost-app/static/media/logo.f84172b8ec5492ae4cab.png",
     "static/media/Brevia-Bold.woff": "/lost-app/static/media/Brevia-Bold.8a5bbd11d864eb8c1078.woff",
@@ -9,12 +9,12 @@
     "static/media/icon-profile.png": "/lost-app/static/media/icon-profile.11f07fa54273ebe78d60.png",
     "static/media/choc.woff": "/lost-app/static/media/choc.69f9e64a97229ad5c03e.woff",
     "index.html": "/lost-app/index.html",
-    "main.ce9fa3fa.css.map": "/lost-app/static/css/main.ce9fa3fa.css.map",
-    "main.3f1e45dd.js.map": "/lost-app/static/js/main.3f1e45dd.js.map",
+    "main.16054a61.css.map": "/lost-app/static/css/main.16054a61.css.map",
+    "main.d0d557b3.js.map": "/lost-app/static/js/main.d0d557b3.js.map",
     "787.5d0e5b5d.chunk.js.map": "/lost-app/static/js/787.5d0e5b5d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce9fa3fa.css",
-    "static/js/main.3f1e45dd.js"
+    "static/css/main.16054a61.css",
+    "static/js/main.d0d557b3.js"
   ]
 }
