@@ -19,17 +19,27 @@ export function SelectTable({ clash, selected, setSelected }: SelectTablePros) {
         <table>
           <thead>
             <tr>
-              <th scope="col">--</th>
-              <th scope="col">#</th>
-              <th scope="col">nick</th>
-              <th scope="col">ATK</th>
-              <th scope="col">HP</th>
+              <th scope="col" className="px25">
+                --
+              </th>
+              <th scope="col" className="px25">
+                #
+              </th>
+              <th scope="col" className="scroll-h">
+                nick
+              </th>
+              <th scope="col" className="px50">
+                ATK
+              </th>
+              <th scope="col" className="px50">
+                HP
+              </th>
             </tr>
           </thead>
           <tbody>
             {players.map((player, index) => (
               <tr key={shortid.generate()}>
-                <th scope="row">
+                <th scope="row" className="px25">
                   <input
                     type="checkbox"
                     name={player.nickname}
@@ -49,10 +59,12 @@ export function SelectTable({ clash, selected, setSelected }: SelectTablePros) {
                     }}
                   />
                 </th>
-                <th scope="row">{index + 1}</th>
-                <td>{player.nickname}</td>
-                <td>{player.atk}</td>
-                <td>{player.hp}</td>
+                <th scope="row" className="px25">
+                  {index + 1}
+                </th>
+                <td className="scroll-h">{player.nickname}</td>
+                <td className="px50">{player.atk}</td>
+                <td className="px50">{player.hp}</td>
               </tr>
             ))}
           </tbody>

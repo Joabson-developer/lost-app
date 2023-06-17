@@ -13,14 +13,6 @@ table {
     font-size: 12px;
   }
 
-  thead th {
-    border-bottom: 1px solid rgba(99, 99, 99, 0.5);
-
-    &.actions {
-      width: 75px;
-    }
-  }
-
   button {
     padding: 5px;
     line-height: 0;
