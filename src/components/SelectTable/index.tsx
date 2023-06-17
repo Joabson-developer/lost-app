@@ -2,12 +2,17 @@ import "./style.scss"
 import { useContext } from "react"
 import { PlayersContext } from "../../contexts/players/players.context"
 
+import shortid from "shortid"
+
 type SelectTablePros = {
   clash: Clash
+  selected: Player[]
+  setSelected: React.Dispatch<React.SetStateAction<Player[]>>
 }
 
-export function SelectTable({ clash }: SelectTablePros) {
-  const { players, setPlayers } = useContext(PlayersContext)
+export function SelectTable({ clash, selected, setSelected }: SelectTablePros) {
+  const { players } = useContext(PlayersContext)
+
   return (
     <>
       {players.length > 0 && (
@@ -23,9 +28,26 @@ export function SelectTable({ clash }: SelectTablePros) {
           </thead>
           <tbody>
             {players.map((player, index) => (
-              <tr key={index}>
+              <tr key={shortid.generate()}>
                 <th scope="row">
-                  <input type="checkbox" name={player.nickname} />
+                  <input
+                    type="checkbox"
+                    name={player.nickname}
+                    checked={selected.some(
+                      (item) => item.nickname === player.nickname
+                    )}
+                    onChange={(e) => {
+                      if (e.target.checked)
+                        setSelected((current) => [...current, player])
+                      else
+                        setSelected((current) =>
+                          current.filter(
+                            (currentPlayer) =>
+                              currentPlayer.nickname !== player.nickname
+                          )
+                        )
+                    }}
+                  />
                 </th>
                 <th scope="row">{index + 1}</th>
                 <td>{player.nickname}</td>
