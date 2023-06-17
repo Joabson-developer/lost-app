@@ -8,7 +8,7 @@ import shortid from "shortid"
 import iconProfile from "../../assets/icon-profile.png"
 
 export function Cards() {
-  const { clash, setClash } = useContext(ClashContext)
+  const { clash } = useContext(ClashContext)
 
   const [controlDialog, setControlDialog] = useState(clash.map(() => false))
 
@@ -29,34 +29,42 @@ export function Cards() {
               <span className="card__points">
                 The winner will obtain <strong>{card.points}</strong> Points
               </span>
-              <button
-                className="add-member"
-                onClick={() => {
-                  setControlDialog((current) =>
-                    current.map(
-                      (control, controlIndex) => controlIndex === index
+              <div className="card__content__players">
+                <button
+                  className="add-member"
+                  onClick={() => {
+                    setControlDialog((current) =>
+                      current.map(
+                        (control, controlIndex) => controlIndex === index
+                      )
                     )
-                  )
-                }}
-              >
-                <img src={iconProfile} aria-hidden="true" alt="" />
-                Add players
-              </button>
+                  }}
+                >
+                  <img src={iconProfile} aria-hidden="true" alt="" />
+                  Add players
+                </button>
+                <ul className="card__content__players__list">
+                  {card.player?.map((player: Player) => (
+                    <li>
+                      <span className="nickname">{player.nickname}</span>
+                      <span className="atk">
+                        <strong>atk:</strong> {player.atk}
+                      </span>
+                      <span className="hp">
+                        <strong>hp:</strong> {player.hp}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div className="card__time">
                 <span>{card.time}Start</span>
               </div>
             </div>
             <SelectPlayersDialog
               open={controlDialog[index]}
-              dispatch={() =>
-                setControlDialog((current) =>
-                  current.map((_, controlIndex) => controlIndex === index)
-                )
-              }
               close={() =>
-                setControlDialog((current) =>
-                  current.map((_, controlIndex) => false)
-                )
+                setControlDialog((current) => current.map(() => false))
               }
               clash={card}
             />

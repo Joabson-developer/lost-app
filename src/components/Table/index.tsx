@@ -1,8 +1,9 @@
-import { BsFillTrashFill, BsPencilFill } from "react-icons/bs"
-
-import "./style.scss"
 import { useContext } from "react"
 import { PlayersContext } from "../../contexts/players/players.context"
+import { BsFillTrashFill, BsPencilFill } from "react-icons/bs"
+import shortid from "shortid"
+
+import "./style.scss"
 
 export function Table() {
   const { players, setPlayers } = useContext(PlayersContext)
@@ -23,7 +24,7 @@ export function Table() {
           </thead>
           <tbody>
             {players.map((player, index) => (
-              <tr key={index}>
+              <tr key={shortid.generate()}>
                 <th scope="row">{index + 1}</th>
                 <td>{player.nickname}</td>
                 <td>{player.atk}</td>

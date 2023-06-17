@@ -1,13 +1,14 @@
+import { useState, useContext } from "react"
 import { Button, Dialog } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import "./style.scss"
 
 import closeButton from "../../assets/close-button.png"
 import { SelectTable } from "../SelectTable"
+import { ClashContext } from "../../contexts/clash/clash.context"
 
 type PlayersDialogProps = {
   open: boolean
-  dispatch?: () => void
   close?: () => void
   clash: Clash
 }
@@ -23,18 +24,49 @@ const BootstrapDialog = styled(Dialog)(() => ({
 
 export function SelectPlayersDialog({
   open,
-  dispatch,
   close,
   clash
 }: PlayersDialogProps) {
+  const { setClash } = useContext(ClashContext)
+  const [selected, setSelected] = useState<Player[]>(() => clash.player || [])
+
   return (
-    <BootstrapDialog onClose={dispatch} open={open} maxWidth="sm" fullWidth>
+    <BootstrapDialog onClose={close} open={open} maxWidth="sm" fullWidth>
       <button aria-label="fechar" className="close" onClick={close}>
         <img src={closeButton} alt="" aria-hidden="true" />
       </button>
       <div className="container">
-        <SelectTable clash={clash} />
+        <SelectTable
+          clash={clash}
+          selected={selected}
+          setSelected={setSelected}
+        />
       </div>
+      <Button
+        className="save"
+        variant="contained"
+        disableElevation
+        onClick={() => {
+          setClash((currentClashs) =>
+            currentClashs.map((currentClash) => {
+              if (
+                currentClash.title === clash.title &&
+                currentClash.description === clash.description
+              ) {
+                currentClash = {
+                  ...currentClash,
+                  player: selected
+                }
+              }
+
+              return currentClash
+            })
+          )
+          close!()
+        }}
+      >
+        Salvar
+      </Button>
     </BootstrapDialog>
   )
 }

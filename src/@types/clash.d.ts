@@ -5,5 +5,5 @@ type Clash = {
   length: "unlimited" | number
   time: string
   color: "purple" | "green" | "red"
-  player?: Player | Players[]
+  player?: Players[]
 }
