@@ -13,6 +13,8 @@ type SelectTablePros = {
 export function SelectTable({ clash, selected, setSelected }: SelectTablePros) {
   const { players } = useContext(PlayersContext)
 
+  console.log(clash)
+
   return (
     <>
       {players.length > 0 && (
@@ -34,7 +36,7 @@ export function SelectTable({ clash, selected, setSelected }: SelectTablePros) {
                     type="checkbox"
                     name={player.nickname}
                     checked={selected.some(
-                      (item) => item.nickname === player.nickname
+                      ({ nickname }) => player.nickname === nickname
                     )}
                     onChange={(e) => {
                       if (e.target.checked)

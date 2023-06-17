@@ -28,7 +28,7 @@ export function SelectPlayersDialog({
   clash
 }: PlayersDialogProps) {
   const { setClash } = useContext(ClashContext)
-  const [selected, setSelected] = useState<Player[]>([])
+  const [selected, setSelected] = useState<Player[]>(() => clash.player || [])
 
   return (
     <BootstrapDialog onClose={close} open={open} maxWidth="sm" fullWidth>
