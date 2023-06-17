@@ -47,3 +47,20 @@
     height: 24px;
   }
 }
+
+.whatsapp {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  line-height: 0;
+  background-color: #f1b32e;
+  border: none;
+  font-size: 32px;
+  padding: 4px;
+  border-radius: 4px;
+  color: initial;
+
+  &:hover {
+    scale: 1.1;
+  }
+}

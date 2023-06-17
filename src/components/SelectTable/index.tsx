@@ -13,8 +13,6 @@ type SelectTablePros = {
 export function SelectTable({ clash, selected, setSelected }: SelectTablePros) {
   const { players } = useContext(PlayersContext)
 
-  console.log(clash)
-
   return (
     <>
       {players.length > 0 && (
