@@ -13,11 +13,15 @@ export function Table() {
         <table>
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">nick</th>
+              <th scope="col" className="px50">
+                #
+              </th>
+              <th scope="col" className="scroll-h">
+                nick
+              </th>
               <th scope="col">ATK</th>
               <th scope="col">HP</th>
-              <th scope="col" className="actions">
+              <th scope="col" className="px75">
                 actions
               </th>
             </tr>
@@ -25,11 +29,13 @@ export function Table() {
           <tbody>
             {players.map((player, index) => (
               <tr key={shortid.generate()}>
-                <th scope="row">{index + 1}</th>
-                <td>{player.nickname}</td>
+                <th scope="row" className="px50">
+                  {index + 1}
+                </th>
+                <td className="scroll-h">{player.nickname}</td>
                 <td>{player.atk}</td>
                 <td>{player.hp}</td>
-                <td>
+                <td className="px75">
                   <button
                     onClick={() => {
                       setPlayers((current) =>

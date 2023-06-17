@@ -36,3 +36,41 @@ input[type="number"]::-webkit-inner-spin-button {
 .MuiButton-root {
   font-family: "Brevia", sans-serif !important;
 }
+
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead th {
+  border-bottom: 1px solid rgba(99, 99, 99, 0.5);
+}
+
+tbody {
+  display: block;
+  max-height: 265px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.px25 {
+  width: 25px !important;
+}
+.px50 {
+  width: 50px !important;
+}
+.px75 {
+  width: 75px !important;
+}
+.scroll-h {
+  overflow-x: auto;
+  text-align: left;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
